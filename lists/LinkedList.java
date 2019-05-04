@@ -39,23 +39,26 @@ public class LinkedList<T> implements ListInterface<T>{
 			i++;
 		}
 		
-		
 		prev.setNext(new Node<T>(element, current));
 		size++;
 		
 		return true;
 	}
 
+	
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		head = null;
 	}
 
 	@Override
 	public boolean contains(T element) {
-		// TODO Auto-generated method stub
-		return false;
+		Node<T> current = head;
+		
+		while (current.getNext() != null && current.getData() != element) 
+			current = current.getNext();
+		
+		return current.getData() == element;
 	}
 
 	@Override
@@ -115,8 +118,13 @@ public class LinkedList<T> implements ListInterface<T>{
 			ls.add(i);
 		
 		System.out.println(ls);
-		ls.add(100, 6);
+		ls.add(10, 11);
 		System.out.println(ls);
+		
+		ls.add(4, 90);
+		System.out.println(ls);
+		
+		System.out.println(ls.contains(11));
 	}
 
 }
