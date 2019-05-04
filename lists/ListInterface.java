@@ -11,7 +11,7 @@ public interface ListInterface<T> {
 	
 	public void add(T t);
 	
-	public void add(int index, T element);
+	public boolean add(int index, T element);
 	
 	public void clear();
 	

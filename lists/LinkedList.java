@@ -11,7 +11,6 @@ public class LinkedList<T> implements ListInterface<T>{
 	}
 
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void add(T t) {
 		Node<T> current = head;
@@ -23,13 +22,28 @@ public class LinkedList<T> implements ListInterface<T>{
 		size++;
 	}
 
-	@Override
-	public void add(int index, T element) {
-		// TODO Auto-generated method stub
-		int counter = 0;
-		Node<T> current = head;
 	
+	@Override
+	public boolean add(int index, T element) {
+		if (index < 0)
+			return false;
 		
+		Node<T> current = head;
+		Node<T> prev = head;
+		
+		int i = -1;
+		
+		while (current != null && i < index) {
+			prev = current;
+			current = current.getNext();
+			i++;
+		}
+		
+		
+		prev.setNext(new Node<T>(element, current));
+		size++;
+		
+		return true;
 	}
 
 	@Override
@@ -80,7 +94,6 @@ public class LinkedList<T> implements ListInterface<T>{
 		return size;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		Node<T> current = head;
@@ -97,11 +110,12 @@ public class LinkedList<T> implements ListInterface<T>{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		LinkedList<Integer> ls = new LinkedList<>();
-		System.out.println(ls);
 		
 		for (int i = 0; i < 10; i++)
 			ls.add(i);
 		
+		System.out.println(ls);
+		ls.add(100, 6);
 		System.out.println(ls);
 	}
 
