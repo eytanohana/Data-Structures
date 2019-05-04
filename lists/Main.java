@@ -3,18 +3,24 @@ package lists;
 public class Main {
 
 	public static void main(String[] args) {
-		LinkedList<Integer> list = new LinkedList<>();
+		LinkedList<Integer> ls = new LinkedList<>();
 		
 		for (int i = 0; i < 10; i++)
-			list.add(i);
+			ls.add(i);
 			
-		System.out.println(list);
+		System.out.println(ls);
 		
-		list.add(0, 6);
-		System.out.println(list);
+		ls.add(0, 6);
+		System.out.println(ls);
 		
-		list.add(11 ,4);
-		System.out.println(list);
+		ls.add(11 ,4);
+		System.out.println(ls);
+		
+		System.out.println(ls.contains(11));
+		
+		System.out.println(ls.get(10));
+		
+		System.out.println(ls.indexOf(9));
 	}
 
 }

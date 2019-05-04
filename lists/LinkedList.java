@@ -48,7 +48,8 @@ public class LinkedList<T> implements ListInterface<T>{
 	
 	@Override
 	public void clear() {
-		head = null;
+		head.setNext(null);
+		size = 0;
 	}
 
 	@Override
@@ -78,8 +79,16 @@ public class LinkedList<T> implements ListInterface<T>{
 
 	@Override
 	public int indexOf(T element) {
-		// TODO Auto-generated method stub
-		return 0;
+		int index = 0;
+		
+		Node<T> current = head.getNext();
+		
+		while (current != null && !current.getData().equals(element)) {
+			current = current.getNext();
+			index++;
+		}
+		
+		return current != null && current.getData().equals(element) ? index : -1;
 	}
 
 	@Override
@@ -115,27 +124,6 @@ public class LinkedList<T> implements ListInterface<T>{
 		}
 		sb.append("\\\\");
 		return sb.toString();
-	}
-	
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		LinkedList<Integer> ls = new LinkedList<>();
-		
-		for (int i = 0; i < 10; i++)
-			ls.add(i);
-		
-		System.out.println(ls);
-		ls.add(10, 11);
-		System.out.println(ls);
-		
-		ls.add(4, 90);
-		System.out.println(ls);
-		
-		System.out.println(ls.contains(11));
-		
-		System.out.print(ls.get(13));
 	}
 
 }
