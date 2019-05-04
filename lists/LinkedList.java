@@ -63,8 +63,17 @@ public class LinkedList<T> implements ListInterface<T>{
 
 	@Override
 	public T get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if (index < 0 || index > size)
+			return null;
+		
+		Node<T> current = head;
+		
+		int i = -1;
+		while (current.getNext() != null && i < index) {
+			current = current.getNext();
+			i++;
+		}
+		return current.getData();
 	}
 
 	@Override
@@ -125,6 +134,8 @@ public class LinkedList<T> implements ListInterface<T>{
 		System.out.println(ls);
 		
 		System.out.println(ls.contains(11));
+		
+		System.out.print(ls.get(13));
 	}
 
 }
