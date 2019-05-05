@@ -120,9 +120,8 @@ public class LinkedList<T> implements ListInterface<T>{
 	}
 
 	@Override
-	public boolean remove(T element) {
-		// TODO Auto-generated method stub
-		return false;
+	public void remove(T element) {
+		remove(indexOf(element));
 	}
 
 	@Override

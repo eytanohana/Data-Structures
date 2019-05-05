@@ -13,7 +13,7 @@ public class Main {
 		ls.add(0, 6);
 		System.out.println(ls);
 		
-		ls.add(11 ,4);
+		ls.add(11 ,90);
 		System.out.println(ls);
 		
 		System.out.println(ls.contains(11));
@@ -25,6 +25,11 @@ public class Main {
 		System.out.println(ls);
 		ls.remove(0);
 		System.out.println(ls);
+		
+		Integer element = 0;
+		ls.remove(element);
+		System.out.println(ls);
+		System.out.println(ls.size());
 	}
 
 }

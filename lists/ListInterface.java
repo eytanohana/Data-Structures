@@ -22,7 +22,7 @@ public interface ListInterface<T> {
 	
 	public T remove(int index);
 	
-	public boolean remove(T element);
+	public void remove(T element);
 	
 	public int size();
 	
