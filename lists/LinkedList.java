@@ -114,6 +114,7 @@ public class LinkedList<T> implements ListInterface<T>{
 		
 		T element = current.getData();
 		prev.setNext(current.getNext());
+		size--;
 		
 		return element;
 	}
