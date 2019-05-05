@@ -92,15 +92,30 @@ public class LinkedList<T> implements ListInterface<T>{
 	}
 
 	@Override
-	public int isEmpty() {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean isEmpty() {
+		return size == 0;
 	}
 
 	@Override
 	public T remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if (index < 0 || index >= size)
+			return null;
+		
+		int i = -1;
+		
+		Node<T> current = head;
+		Node<T> prev = head;
+		
+		while (current != null && i < index) {
+			prev = current;
+			current = current.getNext();
+			i++;
+		}
+		
+		T element = current.getData();
+		prev.setNext(current.getNext());
+		
+		return element;
 	}
 
 	@Override

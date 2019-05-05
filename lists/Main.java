@@ -21,6 +21,10 @@ public class Main {
 		System.out.println(ls.get(10));
 		
 		System.out.println(ls.indexOf(9));
+		
+		System.out.println(ls);
+		ls.remove(0);
+		System.out.println(ls);
 	}
 
 }

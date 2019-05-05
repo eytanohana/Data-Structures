@@ -1,6 +1,3 @@
-/**
- * 
- */
 package lists;
 
 /**
@@ -21,7 +18,7 @@ public interface ListInterface<T> {
 	
 	public int indexOf(T element);
 	
-	public int isEmpty();
+	public boolean isEmpty();
 	
 	public T remove(int index);
 	
