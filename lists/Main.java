@@ -27,7 +27,7 @@ public class Main {
 		System.out.println(ls);
 		
 		Integer element = 0;
-		ls.remove(element);
+		ls.remove(10);
 		System.out.println(ls);
 		System.out.println(ls.size());
 	}
