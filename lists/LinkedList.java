@@ -150,7 +150,7 @@ public class LinkedList<T> implements ListInterface<T>{
 		Node<T> current = head;
 		Node<T> prev = head;
 		
-		while (current != null && i < index) {
+		while (current.getNext() != null && i < index) {
 			prev = current;
 			current = current.getNext();
 			i++;
@@ -177,7 +177,6 @@ public class LinkedList<T> implements ListInterface<T>{
 	 */
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
 		return size;
 	}
 

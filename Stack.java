@@ -16,6 +16,10 @@ public class Stack<T> {
         return stack.remove(0);
     }
 
+    public T peek() {
+        return stack.get(0);
+    }
+
     public int size() {
         return stack.size();
     }
@@ -44,11 +48,9 @@ public class Stack<T> {
         System.out.println(stack);
         System.out.println(stack.pop());
 
-
-
-
-
-
+        System.out.println(stack);
+        System.out.println(stack.peek());
+        System.out.println(stack);
     }
 
 }
