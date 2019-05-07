@@ -9,6 +9,10 @@ public class ArrayList<T> implements ListInterface {
     private static final int DEFAULT_CAPACITY = 10;
 
 
+    /**
+     * Constructs a new ArrayList object with a given initial capacity.
+     * @param capacity the initial capacity of the list.
+     */
     public ArrayList(int capacity) {
         arrList = new Object[capacity];
         this.size = 0;
@@ -20,18 +24,29 @@ public class ArrayList<T> implements ListInterface {
     }
 
     /**
+     * Resizes the arrayList to contain twice the capacity as before.
+     *
+     * Runs in O(n).
+     */
+    private void resize() {
+        Object[] arr = new Object[capacity * 2];
+        System.arraycopy(arrList, 0, arr, 0, size);
+        capacity *= 2;
+        arrList = arr;
+    }
+
+    /**
      * Adds a new elements to the end of the list. If the list is full
      * the capacity is doubled and every element is copied into the new list.
+     *
+     * In the worst case runs in O(n). In most cases runs in O(1).
      *
      * @param element The element to add.
      */
     @Override
     public void add(Object element) {
         if (size == capacity) {
-            Object[] arr = new Object[capacity * 2];
-            System.arraycopy(arrList, 0, arr, 0, size);
-            capacity *= 2;
-            arrList = arr;
+            resize();
         }
 
         arrList[size] = element;
@@ -39,9 +54,11 @@ public class ArrayList<T> implements ListInterface {
     }
 
     /**
-     * Adds an elements at the specified index. If the index is less than 0,
+     * Adds an elements at the specified index and shifts all other elements over. If the index is less than 0,
      * then it returns false. Otherwise if the index is greater than the size,
      * then just add it to the end.
+     *
+     * Runs in O(n).
      *
      * @param element The element to add.
      * @param index   The index of the new elements to add.
@@ -49,7 +66,25 @@ public class ArrayList<T> implements ListInterface {
      */
     @Override
     public boolean add(Object element, int index) {
-        return false;
+        if (index < 0)
+            return false;
+
+        if (index > size) {
+            add(element);
+            return true;
+        }
+
+        else {
+            if (size == capacity) {
+                resize();
+                System.arraycopy(arrList, index, arrList, index + 1, size - index);
+            }
+            else
+                System.arraycopy(arrList, index, arrList, index + 1, size - index);
+            arrList[index] = element;
+            size++;
+            return true;
+        }
     }
 
     /**
@@ -57,7 +92,9 @@ public class ArrayList<T> implements ListInterface {
      */
     @Override
     public void clear() {
-
+        arrList = new Object[DEFAULT_CAPACITY];
+        size = 0;
+        capacity = DEFAULT_CAPACITY;
     }
 
     /**
@@ -127,7 +164,11 @@ public class ArrayList<T> implements ListInterface {
      */
     @Override
     public int size() {
-        return 0;
+        return size;
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 
     public String toString() {
@@ -143,6 +184,17 @@ public class ArrayList<T> implements ListInterface {
 
     public static void main(String[] args) {
         ArrayList<Integer> ls = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++)
+            ls.add(i);
+        System.out.println(ls.size());
+
+        System.out.println(ls);
+
+        ls.add(999, 9);
+        System.out.println(ls);
+        System.out.println(ls.getCapacity());
+        ls.clear();
         System.out.println(ls);
     }
 }
