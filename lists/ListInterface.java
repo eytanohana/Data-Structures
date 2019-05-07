@@ -81,11 +81,4 @@ package lists;
 	 * @return The size of the list.
 	 */
 	 int size();
-
-
-	/**
-	 * @return A String representation of the list.
-	 */
-	 String toString();
-	
 }
