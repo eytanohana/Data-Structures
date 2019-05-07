@@ -223,6 +223,7 @@ public class LinkedList<T> implements ListInterface<T>{
 	/**
 	 * @return A String representation of the list.
 	 */
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		Node<T> current = head;
@@ -234,7 +235,7 @@ public class LinkedList<T> implements ListInterface<T>{
 		sb.append("\\\\");
 		return sb.toString();
 	}
-	
+
 
 
 	public static void main(String[] args) {
