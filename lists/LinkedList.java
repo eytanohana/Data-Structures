@@ -1,12 +1,40 @@
 package lists;
 
 public class LinkedList<T> implements ListInterface<T>{
+
+
+    class Node<T> {
+        private T data;
+        private Node<T> next;
+
+        public Node(T data, Node<T> next) {
+            this.data = data;
+            this.setNext(next);
+        }
+
+        public Node(T data) {
+            this(data, null);
+        }
+
+
+        public T getData() {
+            return this.data;
+        }
+
+        public Node<T> getNext() {
+            return next;
+        }
+
+        public void setNext(Node<T> next) {
+            this.next = next;
+        }
+    }
 	
 	private int size;
 	private Node<T> head;
 
 	/**
-	 * Establishes a new LinkedList with a pointer to the empty list.
+	 * Establishes a new LinkedList with a pointer "head" to the empty list.
 	 */
 	public LinkedList() {
 		head = new Node<>(null);
