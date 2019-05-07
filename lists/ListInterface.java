@@ -49,6 +49,7 @@ package lists;
 	/**
 	 * @param element The element to look fpr
 	 * @return The index of the first occurrence of the given element.
+	 * or -1 if it's not in the list.
 	 */
 	 int indexOf(T element);
 

@@ -134,10 +134,15 @@ public class ArrayList<T> implements ListInterface {
     /**
      * @param element The element to look fpr
      * @return The index of the first occurrence of the given element.
+     * or -1 if it's not in the list.
      */
     @Override
     public int indexOf(Object element) {
-        return 0;
+        for (int i = 0; i < size; i++) {
+            if (arrList[i].equals(element))
+                return i;
+        }
+        return -1;
     }
 
     /**
@@ -147,18 +152,26 @@ public class ArrayList<T> implements ListInterface {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     /**
-     * Removes the element at the specified index.
+     * Removes the element at the specified index and
+     * shifts the rest of the elements back one place.
      *
      * @param index The index of the element to remove.
      * @return The removed element if there was one. otherwise null
      */
     @Override
     public Object remove(int index) {
-        return null;
+        if (index < 0 || index >= size)
+            return null;
+
+        Object removed = arrList[index];
+
+        System.arraycopy(arrList, index+1, arrList, index, size - index);
+        size--;
+        return removed;
     }
 
     /**
@@ -168,7 +181,7 @@ public class ArrayList<T> implements ListInterface {
      */
     @Override
     public void remove(Object element) {
-
+        remove(indexOf(element));
     }
 
     /**
@@ -209,5 +222,15 @@ public class ArrayList<T> implements ListInterface {
 
         System.out.println(ls);
         System.out.println(ls.get(11));
+
+        System.out.println(ls.indexOf(99));
+
+        System.out.println(ls.remove(9));
+        System.out.println(ls);
+
+        Integer x = 4;
+        ls.remove(x);
+        System.out.println(ls);
+
     }
 }

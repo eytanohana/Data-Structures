@@ -149,6 +149,7 @@ public class LinkedList<T> implements ListInterface<T>{
 	/**
 	 * @param element The element to look fpr
 	 * @return The index of the first occurrence of the given element.
+	 * or -1 if it's not in the list.
 	 */
 	@Override
 	public int indexOf(T element) {
