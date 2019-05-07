@@ -231,6 +231,5 @@ public class ArrayList<T> implements ListInterface {
         Integer x = 4;
         ls.remove(x);
         System.out.println(ls);
-
     }
 }
