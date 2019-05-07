@@ -100,23 +100,35 @@ public class ArrayList<T> implements ListInterface {
     /**
      * Checks whether a certain element is contained in the given list.
      *
+     * Runs in O(n).
+     *
      * @param element The element to search for.
      * @return True if the element is in the list, false otherwise.
      */
     @Override
     public boolean contains(Object element) {
+        for (int i = 0; i < size; i++) {
+            if (arrList[i].equals(element))
+                return true;
+        }
+
         return false;
     }
 
     /**
      * Retrieves the element at the specified index.
      *
+     * Runs in O(1).
+     *
      * @param index The index of the element.
      * @return The element itself.
      */
     @Override
-    public Object get(int index) {
-        return null;
+    public T get(int index) {
+        if (index < 0 || index >= size)
+            return null;
+
+        return (T) arrList[index];
     }
 
     /**
@@ -194,7 +206,8 @@ public class ArrayList<T> implements ListInterface {
         ls.add(999, 9);
         System.out.println(ls);
         System.out.println(ls.getCapacity());
-        ls.clear();
+
         System.out.println(ls);
+        System.out.println(ls.get(11));
     }
 }
