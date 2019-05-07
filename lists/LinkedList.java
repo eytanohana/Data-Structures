@@ -14,7 +14,7 @@ public class LinkedList<T> implements ListInterface<T>{
 	}
 
 	/**
-	 * Adds a new elements to the ned of the list.
+	 * Adds a new elements to the end of the list.
 	 * @param element The element to add.
 	 */
 	@Override
@@ -38,7 +38,7 @@ public class LinkedList<T> implements ListInterface<T>{
 	 * @return true if the element was added, false otherwise.
 	 */
 	@Override
-	public boolean add(int index, T element) {
+	public boolean add(T element, int index) {
 		if (index < 0)
 			return false;
 		
@@ -57,6 +57,10 @@ public class LinkedList<T> implements ListInterface<T>{
 		size++;
 		
 		return true;
+	}
+
+	public void addFirst(T element) {
+		add(element, 0);
 	}
 
 	/**
@@ -103,6 +107,14 @@ public class LinkedList<T> implements ListInterface<T>{
 			i++;
 		}
 		return current.getData();
+	}
+
+	public T getFirst() {
+		return get(0);
+	}
+
+	public T getLast() {
+		return get(size-1);
 	}
 
 

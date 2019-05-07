@@ -9,7 +9,7 @@ public class Stack<T> {
     }
 
     public void push(T elem) {
-        stack.add(0, elem);
+        stack.addFirst(elem);
     }
 
     public T pop() {

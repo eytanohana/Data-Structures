@@ -10,10 +10,10 @@ public class Main {
 			
 		System.out.println(ls);
 		
-		ls.add(0, 6);
+		ls.add(6, 0);
 		System.out.println(ls);
 		
-		ls.add(11 ,90);
+		ls.add(90 ,11);
 		System.out.println(ls);
 		
 		System.out.println(ls.contains(11));
@@ -30,6 +30,9 @@ public class Main {
 		ls.remove(0);
 		System.out.println(ls);
 		System.out.println(ls.size());
+
+		System.out.println(ls.getLast());
+		System.out.println(ls.getFirst());
 	}
 
 }

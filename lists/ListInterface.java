@@ -4,26 +4,26 @@ package lists;
  * @author eitanohana
  *
  */
-public interface ListInterface<T> {
+ public interface ListInterface<T> {
 	
-	public void add(T t);
+	void add(T t);
 	
-	public boolean add(int index, T element);
+	boolean add(T element, int index);
 	
-	public void clear();
+	 void clear();
 	
-	public boolean contains(T element);
+	 boolean contains(T element);
 	
-	public T get(int index);
+	 T get(int index);
 	
-	public int indexOf(T element);
+	 int indexOf(T element);
 	
-	public boolean isEmpty();
+	 boolean isEmpty();
 	
-	public T remove(int index);
+	 T remove(int index);
 	
-	public void remove(T element);
+	 void remove(T element);
 	
-	public int size();
+	 int size();
 	
 }
