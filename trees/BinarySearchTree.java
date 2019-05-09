@@ -39,6 +39,20 @@ public class BinarySearchTree<T> {
         }
     }
 
+    private Node<T> root;
+    private int size;
+
+    public BinarySearchTree(T data) {
+        root = new Node(data);
+        size = 0;
+    }
+
+    public static void main(String[] args) {
+
+    }
+
+
+
 
 
 }
