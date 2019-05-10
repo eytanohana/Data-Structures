@@ -50,7 +50,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public void insert(T data) {
-        if (this.data.compareTo(data) < 1) {
+        if (data.compareTo(this.data) < 1) {
             if (left != null)
                 left.insert(data);
             else
@@ -65,31 +65,55 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
-    public static void printTree(BinarySearchTree root, int depth) {
+    private void printTree(int depth) {
 
-        if (root == null)
+        if (this == null)
             return;
 
-        System.out.println(root.data);
+        System.out.println(this.data);
 
-        if (root.isLeaf())
+        if (this.isLeaf())
             return;
 
         else {
             depth += 1;
-            for (int i = 0; i < depth; i++)
-                System.out.print("   ");
-            printTree(root.right, depth);
+            if (right != null) {
+                for (int i = 0; i < depth; i++)
+                    System.out.print('\t');
+                right.printTree(depth);
+            }
 
-            for (int i = 0; i < depth; i++)
-                System.out.print("   ");
-            printTree(root.left, depth);
+            if (left != null) {
+                for (int i = 0; i < depth; i++)
+                    System.out.print('\t');
+                left.printTree(depth);
+            }
         }
     }
 
-    public static void printTree(BinarySearchTree root) {
-        printTree(root, 0);
+    public void printTree() {
+        printTree(0);
     }
+
+
+    public void inOrderTraversal() {
+        if (left != null) {
+            left.inOrderTraversal();
+            System.out.print(data + "  ");
+            return;
+        }
+
+        System.out.print(data + "  ");
+
+        if (right != null) {
+            right.inOrderTraversal();
+            System.out.print(data + "  ");
+            return;
+        }
+
+    }
+
+
 
     public static void main(String[] args) {
         BinarySearchTree<Integer> tree = new BinarySearchTree<>(5);
@@ -97,12 +121,17 @@ public class BinarySearchTree<T extends Comparable<T>> {
         tree.insert(10);
         tree.insert(0);
 
-        tree.insert(-5);
+       // tree.insert(-5);
         tree.insert(3);
         tree.insert(7);
-        tree.insert(15);
+        //tree.insert(15);
 
-        printTree(tree);
+        tree.printTree();
+
+        System.out.println();
+        System.out.println();
+
+        tree.inOrderTraversal();
     }
 
 
