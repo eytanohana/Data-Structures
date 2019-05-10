@@ -7,6 +7,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     private T data;
 
+    // Supposed to hold the size of the tree -- not implemented yet.
+    private int size;
 
     public BinarySearchTree(T data) {
         this(data, null, null);
