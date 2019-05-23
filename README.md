@@ -5,3 +5,5 @@ This repository will hold all of Eytan and Baraks personal implementations of co
 Every class will implement a different data structure and similar structures will be grouped together in the same package.
 
 All classes will be polymorphic to increase its usability.
+
+All the source code will be stored in the src folder. You can ignore the out folder.
