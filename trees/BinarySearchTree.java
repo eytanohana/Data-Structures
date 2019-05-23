@@ -128,7 +128,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     public static void main(String[] args) {
 //           Build a tree that looks like:
- //
+
 //                      5
 //                    /   \
 //                   0     10
