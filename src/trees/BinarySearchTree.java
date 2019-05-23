@@ -125,7 +125,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     public void preOrderTraversal() {
         if (this != null) {
-            System.out.print(data + " ");
+            System.out.print(data + "  ");
         }
 
         if (left != null) {
@@ -135,6 +135,21 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (right != null) {
             right.preOrderTraversal();
         }
+    }
+
+    public void postOrderTraversal() {
+        if (left != null) {
+            left.postOrderTraversal();
+        }
+
+        if (right != null) {
+            right.postOrderTraversal();
+        }
+
+        if (this != null) {
+            System.out.print(data + "  ");
+        }
+
     }
 
 
@@ -162,9 +177,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
         System.out.println();
         System.out.println();
 
-        // need to fix inOrderTraversal
         tree.inOrderTraversal();
         System.out.println();
         tree.preOrderTraversal();
+        System.out.println();
+        tree.postOrderTraversal();
     }
 }
