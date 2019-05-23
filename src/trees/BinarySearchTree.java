@@ -54,10 +54,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return data;
     }
 
-    public void setData(T data) {
-        this.data = data;
-    }
-
 
     public boolean isLeaf() {
         return right == null && left == null;
