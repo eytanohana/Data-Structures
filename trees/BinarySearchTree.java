@@ -14,10 +14,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
         this(data, null, null);
     }
 
-    public  BinarySearchTree(T data, BinarySearchTree<T> left, BinarySearchTree<T> right) {
+    public BinarySearchTree(T data, BinarySearchTree<T> left, BinarySearchTree<T> right) {
         this.data = data;
         this.left = left;
         this.right = right;
+        this.size = 3;
     }
 
     public void setRight(BinarySearchTree<T> rightChild) {
