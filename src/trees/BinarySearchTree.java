@@ -45,6 +45,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return left;
     }
 
+    public BinarySearchTree<T> getParent() {
+        return parent;
+    }
+
 
     public T getData() {
         return data;
@@ -149,6 +153,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         System.out.println();
         System.out.println();
+
+        System.out.println(tree.right.left.parent.data);
 
         // need to fix inOrderTraversal
         //tree.inOrderTraversal();
