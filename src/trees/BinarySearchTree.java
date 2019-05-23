@@ -113,20 +113,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
     public void inOrderTraversal() {
         if (left != null) {
             left.inOrderTraversal();
-            System.out.print(data + "  ");
-            return;
         }
 
         System.out.print(data + "  ");
 
+
         if (right != null) {
             right.inOrderTraversal();
-            System.out.print(data + "  ");
-            return;
         }
 
     }
-
 
 
     public static void main(String[] args) {
@@ -141,21 +137,19 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         BinarySearchTree<Integer> tree = new BinarySearchTree<>(5);
 
-        tree.insert(10);
+        //tree.insert(10);
         tree.insert(0);
         tree.insert(-5);
         tree.insert(3);
         tree.insert(7);
-        tree.insert(15);
+        //tree.insert(15);
 
         tree.printTree();
 
         System.out.println();
         System.out.println();
 
-        System.out.println(tree.right.left.parent.data);
-
         // need to fix inOrderTraversal
-        //tree.inOrderTraversal();
+        tree.inOrderTraversal();
     }
 }
