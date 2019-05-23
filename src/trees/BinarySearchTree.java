@@ -49,9 +49,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return parent;
     }
 
-
     public T getData() {
         return data;
+    }
+
+    public int getSize() {
+        return size;
     }
 
 
