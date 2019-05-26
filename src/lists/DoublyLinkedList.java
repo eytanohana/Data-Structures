@@ -1,7 +1,5 @@
 package lists;
 
-public class DoublyLinkedList {
-
-
+public class DoubleLinkedList<T> extends LinkedList<T> {
 
 }

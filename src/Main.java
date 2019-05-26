@@ -13,7 +13,6 @@ public class Main {
 
 
         BinarySearchTree<Integer> tree = new BinarySearchTree<>(5);
-
         tree.insert(10);
         tree.insert(0);
         tree.insert(-5);
