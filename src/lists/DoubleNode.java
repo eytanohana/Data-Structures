@@ -5,11 +5,16 @@ public class DoubleNode<T> {
     private DoubleNode<T> next;
     private DoubleNode<T> previous;
 
-
-    public DoubleNode(T data, DoubleNode<T> next, DoubleNode<T> previous) {
+    /**
+     *
+     * @param data the data the node will hold
+     * @param next the next DoubleNode being pointed at
+     * @param previous the previous DoubleNode before
+     */
+    public DoubleNode(T data, DoubleNode<T> previous, DoubleNode<T> next) {
         this.data = data;
-        this.next = next;
         this.previous = previous;
+        this.next = next;
     }
 
     public DoubleNode(T data) {
