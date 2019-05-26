@@ -2,6 +2,7 @@ package lists;
 
 /**
  * @author eitanohana
+ * @author barakdimand
  *
  */
  public interface ListInterface<T> {
