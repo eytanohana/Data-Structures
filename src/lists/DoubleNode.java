@@ -28,4 +28,12 @@ public class DoubleNode<T> {
     public void setNext(DoubleNode<T> next) {
         this.next = next;
     }
+
+    public DoubleNode<T> getPrevious() {
+        return previous;
+    }
+
+    public void setPrevious(DoubleNode<T> previous) {
+        this.previous = previous;
+    }
 }
