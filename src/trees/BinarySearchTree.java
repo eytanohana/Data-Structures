@@ -85,38 +85,38 @@ public class BinarySearchTree<T extends Comparable<T>> {
      * There's a more visually appealing implementation
      * found on stack overflow below.
      */
-//    private void printTree(int depth) {
-//
-//        if (this == null)
-//            return;
-//
-//        System.out.println(this.data);
-//        for (int i = 0; i < depth; i++)
-//            System.out.print("   ");
-//        System.out.print('|');
-//
-//        if (this.isLeaf())
-//            return;
-//
-//        else {
-//            depth += 1;
-//            if (right != null) {
-//                for (int i = 0; i < depth; i++)
-//                    System.out.print("--");
-//                right.printTree(depth);
-//            }
-//
-//            if (left != null) {
-//                for (int i = 0; i < depth; i++)
-//                    System.out.print("--");
-//                left.printTree(depth);
-//            }
-//        }
-//    }
-//
-//    public void printTree() {
-//        printTree(0);
-//    }
+    private void printTree(int depth) {
+
+        if (this == null)
+            return;
+
+        System.out.println(this.data);
+        for (int i = 0; i < depth; i++)
+            System.out.print("   ");
+        System.out.print('|');
+
+        if (this.isLeaf())
+            return;
+
+        else {
+            depth += 1;
+            if (right != null) {
+                for (int i = 0; i < depth; i++)
+                    System.out.print("--");
+                right.printTree(depth);
+            }
+
+            if (left != null) {
+                for (int i = 0; i < depth; i++)
+                    System.out.print("--");
+                left.printTree(depth);
+            }
+        }
+    }
+
+    public void printTree() {
+        printTree(0);
+    }
 
 
     public void inOrderTraversal() {
@@ -154,42 +154,51 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
 
         System.out.print(data + "  ");
-
-
     }
-
 
     /**
      * A more visually appealing implementation of printTree adapted from
      * code found on stackoverflow.
      * https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram
+     *
+     * @return A String representation of the tree
      */
-    public void printTree() {
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
         if (right != null) {
-            right.printTree(true, "");
+            right.toString(true, "", sb);
         }
-        System.out.println(data);
+
+        sb.append(data + "\n");
+
+        if (left != null)
+            left.toString(false, "", sb);
+
+        return sb.toString();
+    }
+
+
+    private void toString(boolean hasRight, String indent, StringBuilder sb) {
+        if (right != null) {
+            right.toString(true, indent + (hasRight ? "        " : " |      "), sb);
+        }
+
+        sb.append(indent);
+        if (hasRight)
+            sb.append(" /");
+        else
+            sb.append(" \\");
+
+        sb.append("----- ");
+        sb.append(data + "\n");
+
         if (left != null) {
-            left.printTree(false, "");
+            left.toString(false, indent + (hasRight ? " |      " : "        "), sb);
         }
     }
 
-    private void printTree(boolean hasRight, String indent) {
-        if (right != null) {
-            right.printTree(true, indent + (hasRight ? "        " : " |      "));
-        }
-        System.out.print(indent);
-        if (hasRight) {
-            System.out.print(" /");
-        } else {
-            System.out.print(" \\");
-        }
-        System.out.print("----- ");
-        System.out.println(data);
-        if (left != null) {
-            left.printTree(false, indent + (hasRight ? " |      " : "        "));
-        }
-    }
+
 
     public static void main(String[] args) {
         BinarySearchTree<Integer> tree = new BinarySearchTree<>(5);
@@ -208,16 +217,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
         tree.insert(12);
         tree.insert(2);
 
-        tree.printTree();
-
-        System.out.println();
-        System.out.println();
-
         tree.inOrderTraversal();
         System.out.println();
         tree.preOrderTraversal();
         System.out.println();
         tree.postOrderTraversal();
+
+        System.out.println("\n\n");
+
+        System.out.println(tree);
     }
 }
 

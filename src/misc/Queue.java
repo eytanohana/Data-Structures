@@ -1,3 +1,5 @@
+package misc;
+
 import lists.LinkedList;
 
 public class Queue<T> {
