@@ -44,7 +44,9 @@ public class Queue<T> {
         System.out.println(q.dequeue());
         System.out.println(q.dequeue());
         System.out.println(q.dequeue());
+
         System.out.println(q);
+
         System.out.println(q.dequeue());
         System.out.println(q.dequeue());
         System.out.println(q.dequeue());

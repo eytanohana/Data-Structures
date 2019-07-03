@@ -63,6 +63,10 @@ public class LinkedList<T> implements ListInterface<T>{
 		add(element, 0);
 	}
 
+	public void addLast(T element) {
+		add(element, size);
+	}
+
 	/**
 	 * Clears the entire list.
 	 */
@@ -216,6 +220,8 @@ public class LinkedList<T> implements ListInterface<T>{
 
 		for (int i = 0; i < 10; i++)
 			ls.add(i);
+
+		ls.addLast(-1);
 
 		System.out.println(ls);
 
