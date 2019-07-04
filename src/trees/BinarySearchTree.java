@@ -9,16 +9,17 @@ public class BinarySearchTree<T extends Comparable> {
     private T data;
     private int size;
 
+
+
     public BinarySearchTree(T data) {
-        this(data, null, null);
+        this(data, null, null, null);
     }
 
 
-
-    public BinarySearchTree(T data, BinarySearchTree<T> left, BinarySearchTree<T> right) {
+    public BinarySearchTree(T data, BinarySearchTree<T> left, BinarySearchTree<T> right, BinarySearchTree<T> parent) {
         this.data = data;
 
-        this.parent = null;
+        this.parent = parent;
         if (left != null) setLeft(left);
         if (right != null) setRight(right);
 
@@ -49,6 +50,18 @@ public class BinarySearchTree<T extends Comparable> {
         return parent;
     }
 
+    public boolean hasLeft() {
+        return left != null;
+    }
+
+    public boolean hasRight() {
+        return right != null;
+    }
+
+    public boolean hasChildren() {
+        return hasLeft() || hasRight();
+    }
+
     public T getData() {
         return data;
     }
@@ -77,6 +90,46 @@ public class BinarySearchTree<T extends Comparable> {
                 setRight(new BinarySearchTree<>(data));
         }
         size += 1;
+    }
+
+    public BinarySearchTree<T> find(T data) {
+        BinarySearchTree<T> current = this;
+
+        while (current != null && current.data != data) {
+            if (data.compareTo(current.data) < 1) {
+                current = current.left;
+            }
+            else {
+                current = current.right;
+            }
+        }
+        return current;
+    }
+
+    public void delete(T data) {
+        BinarySearchTree<T> toDelete;
+
+        if ((toDelete = find(data)) == null) {
+            return;
+        }
+
+
+        BinarySearchTree<T> parent;
+
+        if (!toDelete.hasChildren()) {
+            parent = toDelete.parent;
+
+            if (parent.left == toDelete) {
+                parent.left = null;
+                return;
+            }
+            else {
+                parent.right = null;
+                return;
+            }
+        }
+
+        /********* need to implement other cases and setting size *************/
     }
 
 
@@ -205,8 +258,6 @@ public class BinarySearchTree<T extends Comparable> {
         tree.insert(10);
         tree.insert(0);
         tree.insert(-5);
-
-
         tree.insert(3);
         tree.insert(7);
         tree.insert(15);
@@ -216,16 +267,9 @@ public class BinarySearchTree<T extends Comparable> {
         tree.insert(16);
         tree.insert(12);
         tree.insert(2);
-
-        tree.inOrderTraversal();
         System.out.println();
-        tree.preOrderTraversal();
-        System.out.println();
-        tree.postOrderTraversal();
-
-        System.out.println("\n\n");
-
         System.out.println(tree);
+        System.out.println(tree.getSize());
     }
 }
 
