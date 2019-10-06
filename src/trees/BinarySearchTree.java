@@ -7,11 +7,16 @@ public class BinarySearchTree<T extends Comparable> {
     Node<T> root;
     private int size;
 
+    /**
+     * Constructs a binary tree with the root and its two children.
+     *
+     * @param data The data held in the root node.
+     * @param left The left child.
+     * @param right The right child.
+     */
+    public BinarySearchTree(T data, Node<T> left, Node<T> right) {
 
-
-    public BinarySearchTree(T data, Node<T> left, Node<T> right, Node<T> parent) {
-
-        root = new Node<>(data, parent, left, right);
+        root = new Node<>(data, null, left, right);
         size = 1;
 
         if (left != null) {
@@ -24,21 +29,34 @@ public class BinarySearchTree<T extends Comparable> {
         }
     }
 
-
+    /**
+     * Constructs a binary tree with just the root node initialized with some data.
+     *
+     * @param data The data held in the root node.
+     */
     public BinarySearchTree(T data) {
-        this(data, null, null, null);
+        this(data, null, null);
     }
 
+    /**
+     * Constructs an empty binary tree.
+     */
     public BinarySearchTree() {
         root = null;
         size = 0;
     }
 
+    /**
+     * @return The size of the tree.
+     */
     public int getSize() {
         return size;
     }
 
-
+    /**
+     * Inserts a new node into the tree.
+     * @param data The data to be stored in the node.
+     */
     public void insert(T data) {
         if (root == null) {
             root = new Node<>(data);
