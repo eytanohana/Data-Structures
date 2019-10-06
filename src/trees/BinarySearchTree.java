@@ -1,5 +1,6 @@
 package trees;
 
+
 public class BinarySearchTree<T extends Comparable> {
 
 
@@ -29,7 +30,8 @@ public class BinarySearchTree<T extends Comparable> {
     }
 
     public BinarySearchTree() {
-        this(null, null, null, null);
+        root = null;
+        size = 0;
     }
 
     public int getSize() {
@@ -37,24 +39,33 @@ public class BinarySearchTree<T extends Comparable> {
     }
 
 
+    public void insert(T data) {
+        if (root == null) {
+            root = new Node<>(data);
+        } else {
+            Node<T> current = root;
+            Node<T> newNode = new Node<>(data);
 
-
-//    public void insert(T data) {
-//        if (data.compareTo(this.data) < 1) {
-//            if (left != null)
-//                left.insert(data);
-//            else
-//                setLeft(new BinarySearchTree<>(data));
-//        }
-//
-//        else {
-//            if (right != null)
-//                right.insert(data);
-//            else
-//                setRight(new BinarySearchTree<>(data));
-//        }
-//        size += 1;
-//    }
+            while (true) {
+                if (newNode.compareTo(current) <= 0) {
+                    if (current.hasLeft()) {
+                        current = current.getLeft();
+                    } else {
+                        current.setLeft(newNode);
+                        break;
+                    }
+                } else {
+                    if (current.hasRight()) {
+                        current = current.getRight();
+                    } else {
+                        current.setRight(newNode);
+                        break;
+                    }
+                }
+            }
+        }
+        size++;
+    }
 //
 //    public BinarySearchTree<T> find(T data) {
 //        BinarySearchTree<T> current = this;
@@ -173,47 +184,37 @@ public class BinarySearchTree<T extends Comparable> {
 //        System.out.print(data + "  ");
 //    }
 //
-//    /**
-//     * A more visually appealing implementation of printTree adapted from
-//     * code found on stackoverflow.
-//     * https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram
-//     *
-//     * @return A String representation of the tree
-//     */
-//    public String toString() {
-//        StringBuilder sb = new StringBuilder();
-//
-//        if (right != null) {
-//            right.toString(true, "", sb);
-//        }
-//
-//        sb.append(data + "\n");
-//
-//        if (left != null)
-//            left.toString(false, "", sb);
-//
-//        return sb.toString();
-//    }
-//
-//
-//    private void toString(boolean hasRight, String indent, StringBuilder sb) {
-//        if (right != null) {
-//            right.toString(true, indent + (hasRight ? "        " : " |      "), sb);
-//        }
-//
-//        sb.append(indent);
-//        if (hasRight)
-//            sb.append(" /");
-//        else
-//            sb.append(" \\");
-//
-//        sb.append("----- ");
-//        sb.append(data + "\n");
-//
-//        if (left != null) {
-//            left.toString(false, indent + (hasRight ? " |      " : "        "), sb);
-//        }
-//    }
+    /**
+     * A more visually appealing implementation of printTree adapted from
+     * code found on stackoverflow.
+     * https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram
+     *
+     * @return A String representation of the tree
+     */
+    public String toString() {
+        if (size == 0) {
+            return "Empty tree";
+        }
+
+
+        StringBuilder sb = new StringBuilder();
+        Node<T> right = root.getRight();
+        Node<T> left = root.getLeft();
+
+        if (right != null) {
+            right.toString(true, "", sb);
+        }
+
+        sb.append(root.getData() + "\n");
+
+        if (left != null)
+            left.toString(false, "", sb);
+
+        return sb.toString();
+    }
+
+
+
 
 
     private class Node<T extends Comparable> implements Comparable<Node<T>> {
@@ -279,14 +280,23 @@ public class BinarySearchTree<T extends Comparable> {
         }
 
 
-        @Override
-        public String toString() {
-            return "Node{" +
-                    "data=" + data +
-                    ", parent=" + parent +
-                    ", left=" + left +
-                    ", right=" + right +
-                    '}';
+        private void toString(boolean hasRight, String indent, StringBuilder sb) {
+            if (right != null) {
+                right.toString(true, indent + (hasRight ? "        " : " |      "), sb);
+            }
+
+            sb.append(indent);
+            if (hasRight)
+                sb.append(" /");
+            else
+                sb.append(" \\");
+
+            sb.append("----- ");
+            sb.append(data + "\n");
+
+            if (left != null) {
+                left.toString(false, indent + (hasRight ? " |      " : "        "), sb);
+            }
         }
 
         @Override
@@ -302,30 +312,24 @@ public class BinarySearchTree<T extends Comparable> {
 
 
     public static void main(String[] args) {
-//        BinarySearchTree<Integer> tree = new BinarySearchTree<>(5);
-//        tree.insert(10);
-//        tree.insert(0);
-//        tree.insert(-5);
-//        tree.insert(3);
-//        tree.insert(7);
-//        tree.insert(15);
-//        tree.insert(32);
-//        tree.insert(62);
-//        tree.insert(19);
-//        tree.insert(16);
-//        tree.insert(12);
-//        tree.insert(2);
-//        System.out.println();
-//        System.out.println(tree);
-//        System.out.println(tree.getSize());
-
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.insert(10);
+        tree.insert(0);
+        tree.insert(-5);
+        tree.insert(3);
+        tree.insert(7);
+        tree.insert(15);
+        tree.insert(32);
+        tree.insert(62);
+        tree.insert(19);
+        tree.insert(16);
+        tree.insert(12);
+        tree.insert(2);
 
-        BinarySearchTree<Integer>.Node<String> node1 = tree.new Node<String>("Hello");
-
-        BinarySearchTree<Integer>.Node<String> node2 = tree.new Node<String >("Goodbye");
-
-        System.out.println(node1.compareTo(node2));
+        System.out.println();
+        System.out.println(tree);
+        System.out.println();
+        System.out.println(tree.getSize());
 
     }
 }
