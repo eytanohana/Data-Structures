@@ -109,42 +109,34 @@ public class BinarySearchTree<T extends Comparable> {
 //    }
 //
 //
+
     public void inOrderTraversal() {
-        if (left != null) {
-            left.inOrderTraversal();
-        }
-
-        System.out.print(data + "  ");
-
-
-        if (right != null) {
-            right.inOrderTraversal();
-        }
+        root.inOrderTraversal();
     }
 
-    public void preOrderTraversal() {
-        System.out.print(data + "  ");
+//    public void preOrderTraversal() {
+//        System.out.print(data + "  ");
+//
+//        if (left != null) {
+//            left.preOrderTraversal();
+//        }
+//
+//        if (right != null) {
+//            right.preOrderTraversal();
+//        }
+//    }
 
-        if (left != null) {
-            left.preOrderTraversal();
-        }
-
-        if (right != null) {
-            right.preOrderTraversal();
-        }
-    }
-
-    public void postOrderTraversal() {
-        if (left != null) {
-            left.postOrderTraversal();
-        }
-
-        if (right != null) {
-            right.postOrderTraversal();
-        }
-
-        System.out.print(data + "  ");
-    }
+//    public void postOrderTraversal() {
+//        if (left != null) {
+//            left.postOrderTraversal();
+//        }
+//
+//        if (right != null) {
+//            right.postOrderTraversal();
+//        }
+//
+//        System.out.print(data + "  ");
+//    }
 
     /**
      * A more visually appealing implementation of printTree adapted from
@@ -241,6 +233,19 @@ public class BinarySearchTree<T extends Comparable> {
             return right == null && left == null;
         }
 
+        private void inOrderTraversal() {
+            if (left != null) {
+                left.inOrderTraversal();
+            }
+
+            System.out.print(data + "  ");
+
+
+            if (right != null) {
+                right.inOrderTraversal();
+            }
+        }
+
 
         private void buildBranch(boolean hasRight, String indent, StringBuilder sb) {
             if (right != null) {
@@ -295,7 +300,7 @@ public class BinarySearchTree<T extends Comparable> {
         System.out.println(tree);
         System.out.println(tree.find('z'));
 
-
+        tree.inOrderTraversal();
 
     }
 }
