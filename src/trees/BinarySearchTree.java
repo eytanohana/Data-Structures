@@ -252,6 +252,68 @@ public class BinarySearchTree<T extends Comparable> {
     }
 
 
+    private class Node<T extends Comparable> {
+        T data;
+        Node<T> parent;
+        Node<T> left;
+        Node<T> right;
+
+
+        public Node(T data, Node<T> parent, Node<T> left, Node<T> right) {
+            this.data = data;
+            this.parent = parent;
+            this.left = left;
+            this.right = right;
+        }
+
+        public Node(T data) {
+            this.data = data;
+        }
+
+        public T getData() {
+            return data;
+        }
+
+        public void setData(T data) {
+            this.data = data;
+        }
+
+        public Node<T> getParent() {
+            return parent;
+        }
+
+        public void setParent(Node<T> parent) {
+            this.parent = parent;
+        }
+
+        public Node<T> getLeft() {
+            return left;
+        }
+
+        public void setLeft(Node<T> left) {
+            this.left = left;
+        }
+
+        public Node<T> getRight() {
+            return right;
+        }
+
+        public void setRight(Node<T> right) {
+            this.right = right;
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "data=" + data +
+                    ", parent=" + parent +
+                    ", left=" + left +
+                    ", right=" + right +
+                    '}';
+        }
+    }
+
+
 
     public static void main(String[] args) {
         BinarySearchTree<Integer> tree = new BinarySearchTree<>(5);
