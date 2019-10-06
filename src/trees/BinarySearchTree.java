@@ -116,17 +116,11 @@ public class BinarySearchTree<T extends Comparable> {
         return sb.toString();
     }
 
-//    public void preOrderTraversal() {
-//        System.out.print(data + "  ");
-//
-//        if (left != null) {
-//            left.preOrderTraversal();
-//        }
-//
-//        if (right != null) {
-//            right.preOrderTraversal();
-//        }
-//    }
+    public String preOrderTraversal() {
+        StringBuilder sb = new StringBuilder();
+        root.preOrderTraversal(sb);
+        return sb.toString();
+    }
 
 //    public void postOrderTraversal() {
 //        if (left != null) {
@@ -248,6 +242,18 @@ public class BinarySearchTree<T extends Comparable> {
             }
         }
 
+        private void preOrderTraversal(StringBuilder sb) {
+            sb.append(data + "  ");
+
+            if (left != null) {
+                left.preOrderTraversal(sb);
+            }
+
+            if (right != null) {
+                right.preOrderTraversal(sb);
+            }
+        }
+
 
         private void buildBranch(boolean hasRight, String indent, StringBuilder sb) {
             if (right != null) {
@@ -281,6 +287,8 @@ public class BinarySearchTree<T extends Comparable> {
 
             return this.data.compareTo(other.data);
         }
+
+
     }
 
 
@@ -302,6 +310,7 @@ public class BinarySearchTree<T extends Comparable> {
         System.out.println(tree);
 
         System.out.println(tree.inOrderTraversal());
+        System.out.println(tree.preOrderTraversal());
 
     }
 }
