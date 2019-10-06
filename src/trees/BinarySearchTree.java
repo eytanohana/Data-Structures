@@ -132,82 +132,25 @@ public class BinarySearchTree<T extends Comparable> {
 //    }
 //
 //
-//    /**
-//     * My own personal implementation of printTree.
-//     * There's a more visually appealing implementation
-//     * found on stack overflow below.
-//     */
-//    private void printTree(int depth) {
-//
-//        if (this == null)
-//            return;
-//
-//        System.out.println(this.data);
-//        for (int i = 0; i < depth; i++)
-//            System.out.print("   ");
-//        System.out.print('|');
-//
-//        if (this.isLeaf())
-//            return;
-//
-//        else {
-//            depth += 1;
-//            if (right != null) {
-//                for (int i = 0; i < depth; i++)
-//                    System.out.print("--");
-//                right.printTree(depth);
-//            }
-//
-//            if (left != null) {
-//                for (int i = 0; i < depth; i++)
-//                    System.out.print("--");
-//                left.printTree(depth);
-//            }
-//        }
-//    }
-//
-//    public void printTree() {
-//        printTree(0);
-//    }
-//
-//
-//    public void inOrderTraversal() {
-//        if (left != null) {
-//            left.inOrderTraversal();
-//        }
-//
-//        System.out.print(data + "  ");
-//
-//
-//        if (right != null) {
-//            right.inOrderTraversal();
-//        }
-//    }
-//
-//    public void preOrderTraversal() {
-//        System.out.print(data + "  ");
-//
-//        if (left != null) {
-//            left.preOrderTraversal();
-//        }
-//
-//        if (right != null) {
-//            right.preOrderTraversal();
-//        }
-//    }
-//
-//    public void postOrderTraversal() {
-//        if (left != null) {
-//            left.postOrderTraversal();
-//        }
-//
-//        if (right != null) {
-//            right.postOrderTraversal();
-//        }
-//
-//        System.out.print(data + "  ");
-//    }
-//
+
+    public String inOrderTraversal() {
+        StringBuilder sb = new StringBuilder();
+        root.inOrderTraversal(sb);
+        return sb.toString();
+    }
+
+    public String preOrderTraversal() {
+        StringBuilder sb = new StringBuilder();
+        root.preOrderTraversal(sb);
+        return sb.toString();
+    }
+
+    public String postOrderTraversal() {
+        StringBuilder sb = new StringBuilder();
+        root.postOrderTraversal(sb);
+        return sb.toString();
+    }
+
     /**
      * A more visually appealing implementation of printTree adapted from
      * code found on stackoverflow.
@@ -303,6 +246,43 @@ public class BinarySearchTree<T extends Comparable> {
             return right == null && left == null;
         }
 
+        private void inOrderTraversal(StringBuilder sb) {
+            if (left != null) {
+                left.inOrderTraversal(sb);
+            }
+
+            sb.append(data + "  ");
+
+
+            if (right != null) {
+                right.inOrderTraversal(sb);
+            }
+        }
+
+        private void preOrderTraversal(StringBuilder sb) {
+            sb.append(data + "  ");
+
+            if (left != null) {
+                left.preOrderTraversal(sb);
+            }
+
+            if (right != null) {
+                right.preOrderTraversal(sb);
+            }
+        }
+
+        private void postOrderTraversal(StringBuilder sb) {
+            if (left != null) {
+                left.postOrderTraversal(sb);
+            }
+
+            if (right != null) {
+                right.postOrderTraversal(sb);
+            }
+
+            sb.append(data + "  ");
+        }
+
 
         private void buildBranch(boolean hasRight, String indent, StringBuilder sb) {
             if (right != null) {
@@ -336,6 +316,9 @@ public class BinarySearchTree<T extends Comparable> {
 
             return this.data.compareTo(other.data);
         }
+
+
+
     }
 
 
@@ -355,9 +338,6 @@ public class BinarySearchTree<T extends Comparable> {
 
         System.out.println();
         System.out.println(tree);
-        System.out.println(tree.find('u'));
-
-
 
     }
 }
