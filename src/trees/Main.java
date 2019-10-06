@@ -10,6 +10,11 @@ public class Main {
         tree.insert(3);
         tree.insert(13);
         tree.insert(14);
+        tree.insert(40);
+        tree.insert(32);
+        tree.insert(35);
+        tree.insert(20);
+
         tree.insert(4);
         tree.insert(1);
         tree.insert(12);
@@ -21,7 +26,5 @@ public class Main {
         tree.delete(15);
 
         System.out.println(tree);
-
-        System.out.println();
     }
 }

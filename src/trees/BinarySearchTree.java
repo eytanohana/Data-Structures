@@ -360,6 +360,20 @@ public class BinarySearchTree<T extends Comparable> {
             sb.append(data + "  ");
         }
 
+        public Node<T> successor() {
+            if (this.hasRight()) {
+                Node<T> current = this.getRight();
+
+                while(current .hasLeft()) {
+                    current = current.getLeft();
+                }
+                return current;
+            }
+
+//            Need to actually work on this case.
+            return null;
+        }
+
         /**
          * Helper function for the Nodes outclass toString method.
          * @param hasRight whether or not the node has a right child.
