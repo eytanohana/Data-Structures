@@ -121,7 +121,15 @@ public class BinarySearchTree<T extends Comparable> {
             } else {
                 toDelete.getParent().setRight(null);
             }
+        } else if (toDelete.hasOnlyOneChild()) {
+            if (toDelete.isRight()) {
+                toDelete.getParent().setRight(toDelete.hasLeft() ? toDelete.getLeft() : toDelete.getRight());
+            } else {
+                toDelete.getParent().setLeft(toDelete.hasLeft() ? toDelete.getLeft() : toDelete.getRight());
+            }
         }
+
+        size--;
 
     }
 
@@ -358,7 +366,7 @@ public class BinarySearchTree<T extends Comparable> {
          * @param indent The format of the indentation.
          * @param sb The StringBuilder that compiles all the branches together.
          */
-        private void buildBranch(boolean hasRight, String indent, StringBuilder sb) {
+         private void buildBranch(boolean hasRight, String indent, StringBuilder sb) {
             if (right != null) {
                 right.buildBranch(true, indent + (hasRight ? "        " : " |      "), sb);
             }
@@ -401,30 +409,6 @@ public class BinarySearchTree<T extends Comparable> {
 
 
 
-    }
-
-
-
-    public static void main(String[] args) {
-        BinarySearchTree<Character> tree = new BinarySearchTree<>();
-
-        tree.insert('g');
-        tree.insert('a');
-        tree.insert('r');
-        tree.insert('h');
-        tree.insert('s');
-        tree.insert('y');
-        tree.insert('t');
-        tree.insert('z');
-        tree.insert('x');
-
-        System.out.println();
-        System.out.println(tree);
-
-        tree.delete('r');
-        System.out.println(tree);
-
-        System.out.println(tree.find('g').hasOnlyOneChild());
     }
 }
 
