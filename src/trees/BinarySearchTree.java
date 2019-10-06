@@ -85,6 +85,11 @@ public class BinarySearchTree<T extends Comparable> {
         size++;
     }
 
+    /**
+     * Searches the tree for the node with the piece of data to find.
+     * @param data The data to find.
+     * @return The node with the data or null if it's not in the tree.
+     */
     public Node<T> find(T data) {
         Node<T> current = this.root;
         Node<T> toFind = new Node<>(data);
@@ -350,7 +355,7 @@ public class BinarySearchTree<T extends Comparable> {
 
         System.out.println();
         System.out.println(tree);
-        System.out.println(tree.find('z'));
+        System.out.println(tree.find('u'));
 
 
 
