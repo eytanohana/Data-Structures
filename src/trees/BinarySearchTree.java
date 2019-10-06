@@ -1,62 +1,39 @@
 package trees;
 
+import lists.Node;
+
 public class BinarySearchTree<T extends Comparable> {
 
-    private BinarySearchTree<T> left;
-    private BinarySearchTree<T> right;
-    private BinarySearchTree<T> parent;
 
-    private T data;
+    Node<T> root;
     private int size;
 
+
+
+    public BinarySearchTree(T data, Node<T> left, Node<T> right, Node<T> parent) {
+
+        root = new Node<>(data, parent, left, right);
+        size = 1;
+
+        if (left != null) {
+            root.setLeft(left);
+            size++;
+        }
+        if (right != null) {
+            root.setRight(right);
+            size++;
+        }
+    }
 
 
     public BinarySearchTree(T data) {
         this(data, null, null, null);
     }
 
-
-    public BinarySearchTree(T data, BinarySearchTree<T> left, BinarySearchTree<T> right, BinarySearchTree<T> parent) {
-        this.data = data;
-
-        this.parent = parent;
-        if (left != null) setLeft(left);
-        if (right != null) setRight(right);
-
-        this.size = 1;
-        if (left != null) size += left.size;
-        if (right != null) size += right.size;
+    public BinarySearchTree() {
+        this(null, null, null, null);
     }
 
-    private void setRight(BinarySearchTree<T> rightChild) {
-        right = rightChild;
-        right.parent = this;
-    }
-
-    public BinarySearchTree<T> getRight() {
-        return right;
-    }
-
-    private void setLeft(BinarySearchTree<T> leftChild) {
-        left = leftChild;
-        left.parent = this;
-    }
-
-    public BinarySearchTree<T> getLeft() {
-        return left;
-    }
-
-    public BinarySearchTree<T> getParent() {
-        return parent;
-    }
-
-    public boolean hasLeft() {
-        return left != null;
-    }
-
-    public boolean hasRight() {
-        return right != null;
-    }
 
     public boolean hasChildren() {
         return hasLeft() || hasRight();
@@ -301,6 +278,15 @@ public class BinarySearchTree<T extends Comparable> {
         public void setRight(Node<T> right) {
             this.right = right;
         }
+
+        public boolean hasLeft() {
+            return left != null;
+        }
+
+        public boolean hasRight() {
+            return right != null;
+        }
+
 
         @Override
         public String toString() {
