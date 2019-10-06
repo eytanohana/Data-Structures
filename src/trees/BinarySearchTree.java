@@ -109,82 +109,43 @@ public class BinarySearchTree<T extends Comparable> {
 //    }
 //
 //
-//    /**
-//     * My own personal implementation of printTree.
-//     * There's a more visually appealing implementation
-//     * found on stack overflow below.
-//     */
-//    private void printTree(int depth) {
-//
-//        if (this == null)
-//            return;
-//
-//        System.out.println(this.data);
-//        for (int i = 0; i < depth; i++)
-//            System.out.print("   ");
-//        System.out.print('|');
-//
-//        if (this.isLeaf())
-//            return;
-//
-//        else {
-//            depth += 1;
-//            if (right != null) {
-//                for (int i = 0; i < depth; i++)
-//                    System.out.print("--");
-//                right.printTree(depth);
-//            }
-//
-//            if (left != null) {
-//                for (int i = 0; i < depth; i++)
-//                    System.out.print("--");
-//                left.printTree(depth);
-//            }
-//        }
-//    }
-//
-//    public void printTree() {
-//        printTree(0);
-//    }
-//
-//
-//    public void inOrderTraversal() {
-//        if (left != null) {
-//            left.inOrderTraversal();
-//        }
-//
-//        System.out.print(data + "  ");
-//
-//
-//        if (right != null) {
-//            right.inOrderTraversal();
-//        }
-//    }
-//
-//    public void preOrderTraversal() {
-//        System.out.print(data + "  ");
-//
-//        if (left != null) {
-//            left.preOrderTraversal();
-//        }
-//
-//        if (right != null) {
-//            right.preOrderTraversal();
-//        }
-//    }
-//
-//    public void postOrderTraversal() {
-//        if (left != null) {
-//            left.postOrderTraversal();
-//        }
-//
-//        if (right != null) {
-//            right.postOrderTraversal();
-//        }
-//
-//        System.out.print(data + "  ");
-//    }
-//
+    public void inOrderTraversal() {
+        if (left != null) {
+            left.inOrderTraversal();
+        }
+
+        System.out.print(data + "  ");
+
+
+        if (right != null) {
+            right.inOrderTraversal();
+        }
+    }
+
+    public void preOrderTraversal() {
+        System.out.print(data + "  ");
+
+        if (left != null) {
+            left.preOrderTraversal();
+        }
+
+        if (right != null) {
+            right.preOrderTraversal();
+        }
+    }
+
+    public void postOrderTraversal() {
+        if (left != null) {
+            left.postOrderTraversal();
+        }
+
+        if (right != null) {
+            right.postOrderTraversal();
+        }
+
+        System.out.print(data + "  ");
+    }
+
     /**
      * A more visually appealing implementation of printTree adapted from
      * code found on stackoverflow.
