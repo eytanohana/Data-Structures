@@ -249,6 +249,7 @@ public class BinarySearchTree<T extends Comparable> {
          */
         public void setLeft(Node<T> left) {
             this.left = left;
+            left.setParent(this);
         }
 
         /**
@@ -264,6 +265,7 @@ public class BinarySearchTree<T extends Comparable> {
          */
         public void setRight(Node<T> right) {
             this.right = right;
+            right.setParent(this);
         }
 
         /**
