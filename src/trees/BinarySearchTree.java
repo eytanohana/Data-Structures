@@ -66,20 +66,21 @@ public class BinarySearchTree<T extends Comparable> {
         }
         size++;
     }
-//
-//    public BinarySearchTree<T> find(T data) {
-//        BinarySearchTree<T> current = this;
-//
-//        while (current != null && current.data != data) {
-//            if (data.compareTo(current.data) < 1) {
-//                current = current.left;
-//            }
-//            else {
-//                current = current.right;
-//            }
-//        }
-//        return current;
-//    }
+
+    public Node<T> find(T data) {
+        Node<T> current = this.root;
+        Node<T> toFind = new Node<>(data);
+
+        while (current != null && current.getData() != data) {
+            if (toFind.compareTo(current) < 1) {
+                current = current.getLeft();
+            }
+            else {
+                current = current.getRight();
+            }
+        }
+        return current;
+    }
 //
 //    public void delete(T data) {
 //        BinarySearchTree<T> toDelete;
@@ -202,13 +203,13 @@ public class BinarySearchTree<T extends Comparable> {
         Node<T> left = root.getLeft();
 
         if (right != null) {
-            right.toString(true, "", sb);
+            right.buildBranch(true, "", sb);
         }
 
         sb.append(root.getData() + "\n");
 
         if (left != null)
-            left.toString(false, "", sb);
+            left.buildBranch(false, "", sb);
 
         return sb.toString();
     }
@@ -280,9 +281,9 @@ public class BinarySearchTree<T extends Comparable> {
         }
 
 
-        private void toString(boolean hasRight, String indent, StringBuilder sb) {
+        private void buildBranch(boolean hasRight, String indent, StringBuilder sb) {
             if (right != null) {
-                right.toString(true, indent + (hasRight ? "        " : " |      "), sb);
+                right.buildBranch(true, indent + (hasRight ? "        " : " |      "), sb);
             }
 
             sb.append(indent);
@@ -295,8 +296,13 @@ public class BinarySearchTree<T extends Comparable> {
             sb.append(data + "\n");
 
             if (left != null) {
-                left.toString(false, indent + (hasRight ? " |      " : "        "), sb);
+                left.buildBranch(false, indent + (hasRight ? " |      " : "        "), sb);
             }
+        }
+
+        @Override
+        public String toString() {
+            return this.data + "";
         }
 
         @Override
@@ -312,24 +318,23 @@ public class BinarySearchTree<T extends Comparable> {
 
 
     public static void main(String[] args) {
-        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
-        tree.insert(10);
-        tree.insert(0);
-        tree.insert(-5);
-        tree.insert(3);
-        tree.insert(7);
-        tree.insert(15);
-        tree.insert(32);
-        tree.insert(62);
-        tree.insert(19);
-        tree.insert(16);
-        tree.insert(12);
-        tree.insert(2);
+        BinarySearchTree<Character> tree = new BinarySearchTree<>();
+
+        tree.insert('g');
+        tree.insert('a');
+        tree.insert('r');
+        tree.insert('h');
+        tree.insert('s');
+        tree.insert('y');
+        tree.insert('t');
+        tree.insert('z');
+        tree.insert('x');
 
         System.out.println();
         System.out.println(tree);
-        System.out.println();
-        System.out.println(tree.getSize());
+        System.out.println(tree.find('z'));
+
+
 
     }
 }
