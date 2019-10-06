@@ -339,6 +339,12 @@ public class BinarySearchTree<T extends Comparable> {
         System.out.println();
         System.out.println(tree);
 
+        System.out.println(tree.find('u'));
+
+        System.out.println(tree.inOrderTraversal());
+        System.out.println(tree.preOrderTraversal());
+        System.out.println(tree.postOrderTraversal());
+
     }
 }
 
