@@ -190,7 +190,15 @@ public class BinarySearchTree<T extends Comparable> {
         Node<T> left;
         Node<T> right;
 
-
+        /**
+         * Constructs a node with some data and pointers to its parent
+         * and children.
+         *
+         * @param data The data stored in the node.
+         * @param parent The parent of the node.
+         * @param left The left child.
+         * @param right The right child.
+         */
         public Node(T data, Node<T> parent, Node<T> left, Node<T> right) {
             this.data = data;
             this.parent = parent;
@@ -198,54 +206,91 @@ public class BinarySearchTree<T extends Comparable> {
             this.right = right;
         }
 
+        /**
+         * Constructs a Node with just some data.
+         * @param data The data to store.
+         */
         public Node(T data) {
-            this.data = data;
+            this(data, null, null, null);
         }
 
+        /**
+         * @return The nodes data.
+         */
         public T getData() {
             return data;
         }
 
-        public void setData(T data) {
-            this.data = data;
-        }
-
+        /**
+         * @return The nodes parent.
+         */
         public Node<T> getParent() {
             return parent;
         }
 
-        public void setParent(Node<T> parent) {
+        /**
+         * Sets the parent of the current node.
+         * @param parent The new parent node.
+         */
+        private void setParent(Node<T> parent) {
             this.parent = parent;
         }
 
+        /**
+         * @return The nodes left child.
+         */
         public Node<T> getLeft() {
             return left;
         }
 
+        /**
+         * Sets the nodes left child.
+         * @param left
+         */
         public void setLeft(Node<T> left) {
             this.left = left;
         }
 
+        /**
+         * @return The nodes right child.
+         */
         public Node<T> getRight() {
             return right;
         }
 
+        /**
+         * Sets the nodes right child.
+         * @param right
+         */
         public void setRight(Node<T> right) {
             this.right = right;
         }
 
+        /**
+         * @return Whether or not the node has a left child.
+         */
         public boolean hasLeft() {
             return left != null;
         }
 
+        /**
+         * @return Whether or not the node has a right child.
+         */
         public boolean hasRight() {
             return right != null;
         }
 
+        /**
+         * @return Whether or not the node is a leaf ie has no children
+         */
         public boolean isLeaf() {
-            return right == null && left == null;
+            return !hasLeft() && !hasRight();
         }
 
+        /**
+         * Helper function for the Nodes outclass inOrderTraversal method.
+         * @param sb The StringBuilder needed to create the traversal.
+         */
         private void inOrderTraversal(StringBuilder sb) {
             if (left != null) {
                 left.inOrderTraversal(sb);
@@ -259,6 +304,10 @@ public class BinarySearchTree<T extends Comparable> {
             }
         }
 
+        /**
+         * Helper function for the Nodes outclass preOrderTraversal method.
+         * @param sb The StringBuilder needed to create the traversal.
+         */
         private void preOrderTraversal(StringBuilder sb) {
             sb.append(data + "  ");
 
@@ -271,6 +320,10 @@ public class BinarySearchTree<T extends Comparable> {
             }
         }
 
+        /**
+         * Helper function for the Nodes outclass postOrderTraversal method.
+         * @param sb The StringBuilder needed to create the traversal.
+         */
         private void postOrderTraversal(StringBuilder sb) {
             if (left != null) {
                 left.postOrderTraversal(sb);
@@ -283,7 +336,12 @@ public class BinarySearchTree<T extends Comparable> {
             sb.append(data + "  ");
         }
 
-
+        /**
+         * Helper function for the Nodes outclass toString method.
+         * @param hasRight whether or not the node has a right child.
+         * @param indent The format of the indentation.
+         * @param sb The StringBuilder that compiles all the branches together.
+         */
         private void buildBranch(boolean hasRight, String indent, StringBuilder sb) {
             if (right != null) {
                 right.buildBranch(true, indent + (hasRight ? "        " : " |      "), sb);
