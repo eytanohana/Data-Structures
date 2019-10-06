@@ -361,11 +361,19 @@ public class BinarySearchTree<T extends Comparable> {
             }
         }
 
+        /**
+         * @return The string representation of the node.
+         */
         @Override
         public String toString() {
             return this.data + "";
         }
 
+        /**
+         * Compares two Nodes based only off their data attributes.
+         * @param other The other node to compare.
+         * @return 0 if te nodes are equal, -1 if this < other, 1 if other > this
+         */
         @Override
         public int compareTo(Node<T> other) {
             if (this == other) {
