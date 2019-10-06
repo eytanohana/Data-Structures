@@ -110,8 +110,10 @@ public class BinarySearchTree<T extends Comparable> {
 //
 //
 
-    public void inOrderTraversal() {
-        root.inOrderTraversal();
+    public String inOrderTraversal() {
+        StringBuilder sb = new StringBuilder();
+        root.inOrderTraversal(sb);
+        return sb.toString();
     }
 
 //    public void preOrderTraversal() {
@@ -233,16 +235,16 @@ public class BinarySearchTree<T extends Comparable> {
             return right == null && left == null;
         }
 
-        private void inOrderTraversal() {
+        private void inOrderTraversal(StringBuilder sb) {
             if (left != null) {
-                left.inOrderTraversal();
+                left.inOrderTraversal(sb);
             }
 
-            System.out.print(data + "  ");
+            sb.append(data + "  ");
 
 
             if (right != null) {
-                right.inOrderTraversal();
+                right.inOrderTraversal(sb);
             }
         }
 
@@ -298,9 +300,8 @@ public class BinarySearchTree<T extends Comparable> {
 
         System.out.println();
         System.out.println(tree);
-        System.out.println(tree.find('z'));
 
-        tree.inOrderTraversal();
+        System.out.println(tree.inOrderTraversal());
 
     }
 }
