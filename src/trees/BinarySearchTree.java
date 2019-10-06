@@ -122,17 +122,11 @@ public class BinarySearchTree<T extends Comparable> {
         return sb.toString();
     }
 
-//    public void postOrderTraversal() {
-//        if (left != null) {
-//            left.postOrderTraversal();
-//        }
-//
-//        if (right != null) {
-//            right.postOrderTraversal();
-//        }
-//
-//        System.out.print(data + "  ");
-//    }
+    public String postOrderTraversal() {
+        StringBuilder sb = new StringBuilder();
+        root.postOrderTraversal(sb);
+        return sb.toString();
+    }
 
     /**
      * A more visually appealing implementation of printTree adapted from
@@ -254,6 +248,18 @@ public class BinarySearchTree<T extends Comparable> {
             }
         }
 
+        private void postOrderTraversal(StringBuilder sb) {
+            if (left != null) {
+                left.postOrderTraversal(sb);
+            }
+
+            if (right != null) {
+                right.postOrderTraversal(sb);
+            }
+
+            sb.append(data + "  ");
+        }
+
 
         private void buildBranch(boolean hasRight, String indent, StringBuilder sb) {
             if (right != null) {
@@ -289,6 +295,7 @@ public class BinarySearchTree<T extends Comparable> {
         }
 
 
+
     }
 
 
@@ -311,6 +318,7 @@ public class BinarySearchTree<T extends Comparable> {
 
         System.out.println(tree.inOrderTraversal());
         System.out.println(tree.preOrderTraversal());
+        System.out.println(tree.postOrderTraversal());
 
     }
 }
