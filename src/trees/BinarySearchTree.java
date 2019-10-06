@@ -1,6 +1,8 @@
 package trees;
 
 
+import lists.Node;
+
 public class BinarySearchTree<T extends Comparable> {
 
 
@@ -104,34 +106,26 @@ public class BinarySearchTree<T extends Comparable> {
         }
         return current;
     }
-//
-//    public void delete(T data) {
-//        BinarySearchTree<T> toDelete;
-//
-//        if ((toDelete = find(data)) == null) {
-//            return;
-//        }
-//
-//
-//        BinarySearchTree<T> parent;
-//
-//        if (!toDelete.hasChildren()) {
-//            parent = toDelete.parent;
-//
-//            if (parent.left == toDelete) {
-//                parent.left = null;
-//                return;
-//            }
-//            else {
-//                parent.right = null;
-//                return;
-//            }
-//        }
-//
-//        /********* need to implement other cases and setting size *************/
-//    }
-//
-//
+
+
+    public void delete(T data) {
+        Node<T> toDelete = find(data);
+
+        if (toDelete == null) {
+            return;
+        }
+
+        if (toDelete.isLeaf()) {
+            if (toDelete.isLeft()) {
+                toDelete.getParent().setLeft(null);
+            } else {
+                toDelete.getParent().setRight(null);
+            }
+        }
+
+    }
+
+
 
     public String inOrderTraversal() {
         StringBuilder sb = new StringBuilder();
@@ -249,7 +243,8 @@ public class BinarySearchTree<T extends Comparable> {
          */
         public void setLeft(Node<T> left) {
             this.left = left;
-            left.setParent(this);
+            if (left != null)
+                left.setParent(this);
         }
 
         /**
@@ -265,7 +260,8 @@ public class BinarySearchTree<T extends Comparable> {
          */
         public void setRight(Node<T> right) {
             this.right = right;
-            right.setParent(this);
+            if (right != null)
+                right.setParent(this);
         }
 
         /**
@@ -287,6 +283,24 @@ public class BinarySearchTree<T extends Comparable> {
          */
         public boolean isLeaf() {
             return !hasLeft() && !hasRight();
+        }
+
+        private boolean hasOnlyOneChild() {
+            return hasRight() ^ hasLeft();
+        }
+
+        /**
+         * @return Whether the node is a left child or not.
+         */
+        public boolean isLeft() {
+            return this.compareTo(parent) <= 0;
+        }
+
+        /**
+         * @return Whether the node is a right child or not.
+         */
+        public boolean isRight() {
+            return !isLeft();
         }
 
         /**
@@ -407,12 +421,10 @@ public class BinarySearchTree<T extends Comparable> {
         System.out.println();
         System.out.println(tree);
 
-        System.out.println(tree.find('u'));
+        tree.delete('r');
+        System.out.println(tree);
 
-        System.out.println(tree.inOrderTraversal());
-        System.out.println(tree.preOrderTraversal());
-        System.out.println(tree.postOrderTraversal());
-
+        System.out.println(tree.find('g').hasOnlyOneChild());
     }
 }
 
