@@ -41,4 +41,9 @@ public class DoubleNode<T> {
     public void setPrevious(DoubleNode<T> previous) {
         this.previous = previous;
     }
+
+    public void connect(DoubleNode<T> next) {
+        this.setNext(next);
+        next.setPrevious(this);
+    }
 }
