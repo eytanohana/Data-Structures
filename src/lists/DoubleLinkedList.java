@@ -64,10 +64,21 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
         return size;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder strBuilder = new StringBuilder("\\");
+        DoubleNode<T> current = head.getNext();
+        while (!current.equals(tail)) {
+            strBuilder.append(current.getData()).append(" <-> ");
+            current = current.getNext();
+        }
+        strBuilder.append("/");
+        return strBuilder.toString();
+    }
+
 
     public static void main(String[] args) {
         DoubleLinkedList<Integer> dls = new DoubleLinkedList<>();
-
         System.out.println(dls);
     }
 }
