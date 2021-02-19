@@ -4,9 +4,16 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     private DoubleNode<T> head;
     private DoubleNode<T> tail;
+    private int size;
+
 
     public DoubleLinkedList () {
+        this.head = new DoubleNode<>(null);
+        this.tail = new DoubleNode<>(null);
 
+        this.head.setNext(tail);
+        this.tail.setPrevious(head);
+        this.size = 0;
     }
 
     @Override
