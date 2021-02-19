@@ -8,12 +8,10 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
 
     public DoubleLinkedList () {
-        this.head = new DoubleNode<>(null);
-        this.tail = new DoubleNode<>(null);
-
-        this.head.setNext(tail);
-        this.tail.setPrevious(head);
-        this.size = 0;
+        head = new DoubleNode<>(null);
+        tail = new DoubleNode<>(null);
+        head.connect(tail);
+        size = 0;
     }
 
     @Override
