@@ -65,7 +65,6 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
     }
 
 
-
     public static void main(String[] args) {
         DoubleLinkedList<Integer> dls = new DoubleLinkedList<>();
 
