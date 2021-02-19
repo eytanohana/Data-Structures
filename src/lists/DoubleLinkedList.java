@@ -63,7 +63,7 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
 
