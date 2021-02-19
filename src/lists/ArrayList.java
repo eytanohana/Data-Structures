@@ -71,20 +71,17 @@ public class ArrayList<T> implements ListInterface {
 
         if (index > size) {
             add(element);
-            return true;
         }
 
         else {
             if (size == capacity) {
                 resize();
-                System.arraycopy(arrList, index, arrList, index + 1, size - index);
             }
-            else
-                System.arraycopy(arrList, index, arrList, index + 1, size - index);
+            System.arraycopy(arrList, index, arrList, index + 1, size - index);
             arrList[index] = element;
             size++;
-            return true;
         }
+        return true;
     }
 
     /**
