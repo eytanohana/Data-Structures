@@ -26,7 +26,7 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     @Override
     public void clear() {
-
+        head.connect(tail);
     }
 
     @Override
