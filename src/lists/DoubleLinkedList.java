@@ -26,7 +26,32 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     @Override
     public boolean add(T element, int index) {
-        return false;
+        if (index < 0) {
+            return false;
+        } else if (index >= size) {
+            add(element);
+            return true;
+        } else {
+            DoubleNode<T> node = new DoubleNode<>(element);
+            if (index >= size / 2) {
+                DoubleNode<T> curr = tail.getPrevious();
+                for (int i = size - 1; i >= index; i--) {
+                    curr = curr.getPrevious();
+                }
+                node.connect(curr.getNext());
+                curr.connect(node);
+            }
+            else {
+                DoubleNode<T> curr = head.getNext();
+                for (int i = 0; i < index; i++) {
+                    curr = curr.getNext();
+                }
+                curr.getPrevious().connect(node);
+                node.connect(curr);
+            }
+            size++;
+            return true;
+        }
     }
 
     @Override
@@ -89,6 +114,14 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
         System.out.println(dls.size());
         for(int i = 0; i < 5; i++)
             dls.add(i);
+        System.out.println(dls);
+        System.out.println(dls.size());
+        dls.add(99, 1);
+        dls.add(100, 2);
+        dls.add(200, 7);
+        dls.add(300, 8);
+        dls.add(350, 8);
+        dls.add(400, 8);
         System.out.println(dls);
         System.out.println(dls.size());
     }
