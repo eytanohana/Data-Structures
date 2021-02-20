@@ -16,7 +16,12 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     @Override
     public void add(T element) {
+        DoubleNode<T> node = new DoubleNode<>(element);
+        DoubleNode<T> last = tail.getPrevious();
 
+        last.connect(node);
+        node.connect(tail);
+        size++;
     }
 
     @Override
