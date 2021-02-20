@@ -1,6 +1,6 @@
 package lists;
 
-public class ArrayList<T> implements ListInterface {
+public class ArrayList<T> implements ListInterface<T> {
 
     private Object[] arrList;
     private int size;
@@ -160,11 +160,11 @@ public class ArrayList<T> implements ListInterface {
      * @return The removed element if there was one. otherwise null
      */
     @Override
-    public Object remove(int index) {
+    public T removeIndex(int index) {
         if (index < 0 || index >= size)
             return null;
 
-        Object removed = arrList[index];
+        T removed = (T) arrList[index];
 
         System.arraycopy(arrList, index+1, arrList, index, size - index);
         size--;
@@ -178,7 +178,7 @@ public class ArrayList<T> implements ListInterface {
      */
     @Override
     public void remove(Object element) {
-        remove(indexOf(element));
+        removeIndex(indexOf(element));
     }
 
     /**
@@ -222,7 +222,7 @@ public class ArrayList<T> implements ListInterface {
 
         System.out.println(ls.indexOf(99));
 
-        System.out.println(ls.remove(9));
+        System.out.println(ls.removeIndex(9));
         System.out.println(ls);
 
         Integer x = 4;
