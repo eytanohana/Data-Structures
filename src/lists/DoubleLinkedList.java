@@ -67,7 +67,11 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     @Override
     public T get(int index) {
-        return null;
+        try {
+            return getNode(index).getData();
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
 
     private DoubleNode<T> getNode(int index) {
