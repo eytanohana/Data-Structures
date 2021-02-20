@@ -71,7 +71,7 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     @Override
     public String toString() {
-        StringBuilder strBuilder = new StringBuilder("\\");
+        StringBuilder strBuilder = new StringBuilder("\\ <-> ");
         DoubleNode<T> current = head.getNext();
         while (!current.equals(tail)) {
             strBuilder.append(current.getData()).append(" <-> ");
