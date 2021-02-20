@@ -81,6 +81,17 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
         return curr;
     }
 
+    private DoubleNode<T> getNodeByElement(T element) {
+        DoubleNode<T> curr = head.getNext();
+        while (!curr.equals(tail)) {
+            if (curr.getData().equals(element)) {
+                return curr;
+            }
+            curr = curr.getNext();
+        }
+        return null;
+    }
+
     @Override
     public int indexOf(T element) {
         int index = -1;
@@ -115,7 +126,11 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     @Override
     public void remove(T element) {
-
+        DoubleNode<T> found = getNodeByElement(element);
+        if (found != null) {
+            found.getPrevious().connect(found.getNext());
+            size--;
+        }
     }
 
     @Override
@@ -163,5 +178,12 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
         System.out.println(dls.indexOf(99));
         System.out.println(dls.indexOf(1100));
         System.out.println(dls.indexOf(2));
+        System.out.println(dls);
+        dls.remove(99);
+        System.out.println(dls);
+        dls.remove(300);
+        System.out.println(dls);
+        dls.remove(200);
+        System.out.println(dls);
     }
 }
