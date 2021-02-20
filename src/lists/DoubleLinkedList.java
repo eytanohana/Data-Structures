@@ -52,7 +52,7 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
