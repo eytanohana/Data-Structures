@@ -56,7 +56,7 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
     }
 
     @Override
-    public T remove(int index) {
+    public T removeIndex(int index) {
         return null;
     }
 
