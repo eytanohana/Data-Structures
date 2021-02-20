@@ -1,7 +1,7 @@
 package lists;
 
 public class DoubleNode<T> {
-    private T data;
+    private final T data;
     private DoubleNode<T> next;
     private DoubleNode<T> previous;
 
@@ -40,5 +40,10 @@ public class DoubleNode<T> {
 
     public void setPrevious(DoubleNode<T> previous) {
         this.previous = previous;
+    }
+
+    public void connect(DoubleNode<T> next) {
+        this.setNext(next);
+        next.setPrevious(this);
     }
 }
