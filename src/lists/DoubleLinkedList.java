@@ -2,8 +2,8 @@ package lists;
 
 public class DoubleLinkedList<T> implements ListInterface<T> {
 
-    private DoubleNode<T> head;
-    private DoubleNode<T> tail;
+    private final DoubleNode<T> head;
+    private final DoubleNode<T> tail;
     private int size;
 
 
