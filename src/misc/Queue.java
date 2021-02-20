@@ -22,7 +22,7 @@ public class Queue<T> {
     }
 
     public T dequeue() {
-        return queue.remove(queue.size()-1);
+        return queue.removeIndex(queue.size()-1);
     }
 
     @Override

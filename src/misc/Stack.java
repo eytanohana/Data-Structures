@@ -15,7 +15,7 @@ public class Stack<T> {
     }
 
     public T pop() {
-        return stack.remove(0);
+        return stack.removeIndex(0);
     }
 
     public T peek() {
