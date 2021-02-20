@@ -49,7 +49,7 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     @Override
     public boolean contains(T element) {
-        return false;
+        return indexOf(element) >= 0;
     }
 
     @Override
@@ -83,7 +83,16 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     @Override
     public int indexOf(T element) {
-        return 0;
+        int index = -1;
+        DoubleNode<T> curr = head.getNext();
+        for (int i = 0; i < size; i++) {
+            if (curr.getData().equals(element)) {
+                index = i;
+                break;
+            }
+            curr = curr.getNext();
+        }
+        return index;
     }
 
     @Override
@@ -144,8 +153,15 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
         System.out.println(dls);
         System.out.println(dls.get(3));
         System.out.println(dls.get(7));
-        System.out.println(dls.get(0));
-        System.out.println(dls.get(dls.size-1));
-        System.out.println(dls.get(-2));
+        System.out.println(dls);
+        System.out.println(dls.removeIndex(0));
+        System.out.println(dls);
+        System.out.println(dls.removeIndex(5));
+        System.out.println(dls);
+        System.out.println(dls.removeIndex(11));
+        System.out.println(dls);
+        System.out.println(dls.indexOf(99));
+        System.out.println(dls.indexOf(1100));
+        System.out.println(dls.indexOf(2));
     }
 }
