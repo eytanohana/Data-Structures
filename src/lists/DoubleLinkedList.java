@@ -33,7 +33,7 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
             return true;
         } else {
             DoubleNode<T> node = new DoubleNode<>(element);
-            DoubleNode<T> indexNode = getNode(index);
+            DoubleNode<T> indexNode = getNodeByIndex(index);
             indexNode.getPrevious().connect(node);
             node.connect(indexNode);
             size++;
@@ -55,13 +55,13 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
     @Override
     public T get(int index) {
         try {
-            return getNode(index).getData();
+            return getNodeByIndex(index).getData();
         } catch (NullPointerException e) {
             return null;
         }
     }
 
-    private DoubleNode<T> getNode(int index) {
+    private DoubleNode<T> getNodeByIndex(int index) {
         if (index < 0 || index >= size) {
             return null;
         }
@@ -103,7 +103,7 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
     @Override
     public T removeIndex(int index) {
         try {
-            DoubleNode<T> node = getNode(index);
+            DoubleNode<T> node = getNodeByIndex(index);
             T data = node.getData();
             node.getPrevious().connect(node.getNext());
             size--;
