@@ -85,5 +85,10 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
     public static void main(String[] args) {
         DoubleLinkedList<Integer> dls = new DoubleLinkedList<>();
         System.out.println(dls);
+        System.out.println(dls.size());
+        for(int i = 0; i < 5; i++)
+            dls.add(i);
+        System.out.println(dls);
+        System.out.println(dls.size());
     }
 }
