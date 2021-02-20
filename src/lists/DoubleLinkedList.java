@@ -134,6 +134,10 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
         dls.add(350, 8);
         dls.add(400, 8);
         System.out.println(dls);
-        System.out.println(dls.size());
+        System.out.println(dls.get(3));
+        System.out.println(dls.get(7));
+        System.out.println(dls.get(0));
+        System.out.println(dls.get(dls.size-1));
+        System.out.println(dls.get(-2));
     }
 }
