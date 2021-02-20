@@ -158,7 +158,7 @@ public class LinkedList<T> implements ListInterface<T>{
 	 * @return The removed element if there was one. otherwise null
 	 */
 	@Override
-	public T remove(int index) {
+	public T removeIndex(int index) {
 		if (index < 0 || index >= size)
 			return null;
 		
@@ -186,7 +186,7 @@ public class LinkedList<T> implements ListInterface<T>{
 	 */
 	@Override
 	public void remove(T element) {
-		remove(indexOf(element));
+		removeIndex(indexOf(element));
 	}
 
 	/**
