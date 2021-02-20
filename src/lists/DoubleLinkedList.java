@@ -33,22 +33,9 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
             return true;
         } else {
             DoubleNode<T> node = new DoubleNode<>(element);
-            if (index >= size / 2) {
-                DoubleNode<T> curr = tail.getPrevious();
-                for (int i = size - 1; i >= index; i--) {
-                    curr = curr.getPrevious();
-                }
-                node.connect(curr.getNext());
-                curr.connect(node);
-            }
-            else {
-                DoubleNode<T> curr = head.getNext();
-                for (int i = 0; i < index; i++) {
-                    curr = curr.getNext();
-                }
-                curr.getPrevious().connect(node);
-                node.connect(curr);
-            }
+            DoubleNode<T> indexNode = getNode(index);
+            indexNode.getPrevious().connect(node);
+            node.connect(indexNode);
             size++;
             return true;
         }
