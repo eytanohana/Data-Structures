@@ -70,6 +70,26 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
         return null;
     }
 
+    private DoubleNode<T> getNode(int index) {
+        if (index < 0 || index >= size) {
+            return null;
+        }
+
+        DoubleNode<T> curr;
+        if (index > size / 2) {
+            curr = tail.getPrevious();
+            for (int i = size-1; i > index; i--) {
+                curr = curr.getPrevious();
+            }
+        } else {
+            curr = head.getNext();
+            for (int i = 0; i < index; i++) {
+                curr = curr.getNext();
+            }
+        }
+        return curr;
+    }
+
     @Override
     public int indexOf(T element) {
         return 0;
