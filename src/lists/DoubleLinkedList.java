@@ -93,7 +93,15 @@ public class DoubleLinkedList<T> implements ListInterface<T> {
 
     @Override
     public T removeIndex(int index) {
-        return null;
+        try {
+            DoubleNode<T> node = getNode(index);
+            T data = node.getData();
+            node.getPrevious().connect(node.getNext());
+            size--;
+            return data;
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
 
     @Override
