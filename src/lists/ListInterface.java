@@ -69,7 +69,7 @@ package lists;
 	 * @param index The index of the element to remove.
 	 * @return The removed element if there was one. otherwise null
 	 */
-	 T remove(int index);
+	 T removeIndex(int index);
 
 
 	/**
